@@ -30,7 +30,7 @@ public class MainActivity extends ActionBarActivity
     /**
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
      */
-    private CharSequence mTitle;
+    private static CharSequence mTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -131,7 +131,13 @@ public class MainActivity extends ActionBarActivity
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+            View rootView = null; inflater.inflate(R.layout.fragment_main, container, false);
+            
+            // Page handling between different fragments
+            if(mTitle.equals("Home")){	
+            	rootView = inflater.inflate(R.layout.fragment_main, container, false);
+            }
+            
             return rootView;
         }
 
